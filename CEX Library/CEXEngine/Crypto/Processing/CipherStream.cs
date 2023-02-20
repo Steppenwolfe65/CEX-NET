@@ -705,7 +705,7 @@ namespace VTDev.Libraries.CEXEngine.Crypto.Processing
         {
 	        int blkSize = m_cipherEngine.BlockSize;
 	        long inpSize = (InStream.Length - InStream.Position);
-	        long alnSize = (inpSize < blkSize) ? 0 : inpSize - blkSize;
+	        long alnSize = (inpSize / blkSize) * blkSize;
 	        long count = 0;
 	        byte[] inpBuffer = new byte[blkSize];
 	        byte[] outBuffer = new byte[blkSize];
@@ -738,7 +738,7 @@ namespace VTDev.Libraries.CEXEngine.Crypto.Processing
         {
 	        int blkSize = m_cipherEngine.BlockSize;
 	        long inpSize = (Input.Length - InOffset);
-	        long alnSize = (inpSize < blkSize) ? 0 : inpSize - blkSize;
+	        long alnSize = (inpSize / blkSize) * blkSize;
 	        long count = 0;
 
 	        m_cipherEngine.IsParallel = false;
